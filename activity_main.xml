@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- FULL-SCREEN CAMERA -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:scaleType="fillCenter" />
+
+    <!-- GRADIENTS -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/gradient_top"
+        android:layout_gravity="top" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:background="@drawable/gradient_bottom"
+        android:layout_gravity="bottom" />
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--   TOP APP BAR                                          -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_gravity="top"
+        android:paddingHorizontal="14dp">
+
+        <!-- LEFT: ISLens + LIVE -->
+        <LinearLayout
+            android:id="@+id/titleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ISL"
+                android:textColor="#00E5FF"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ens"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.04"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:id="@+id/liveBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="● LIVE"
+                android:textColor="#FF4444"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:background="@drawable/badge_live_bg"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp" />
+
+        </LinearLayout>
+
+        <!--
+            RIGHT ICONS ORDER (left → right):
+            Flash | History | Guide | Feedback | Settings
+            Settings is now the LAST (rightmost) button as requested.
+        -->
+        <LinearLayout
+            android:id="@+id/rightIconGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- FLASH — orange -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="#FF9800"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="5dp">
+                    <ImageButton
+                        android:id="@+id/flashButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/flash_off"
+                        android:contentDescription="Toggle flash"
+                        android:background="@null"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        app:tint="#FFFFFF" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flash"
+                    android:textColor="#FF9800"
+                    android:textSize="8sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- HISTORY — purple -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="#7C4DFF"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="5dp">
+                    <ImageButton
+                        android:id="@+id/historyButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@android:drawable/ic_menu_recent_history"
+                        android:contentDescription="View history"
+                        android:background="@null"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        app:tint="#FFFFFF" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="History"
+                    android:textColor="#7C4DFF"
+                    android:textSize="8sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- GUIDE — cyan (previously Settings position) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="8dp">
+
+            </LinearLayout>
+
+            <!-- FEEDBACK — green -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="#00C853"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="5dp">
+                    <ImageButton
+                        android:id="@+id/feedbackButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@android:drawable/ic_menu_send"
+                        android:contentDescription="Send feedback"
+                        android:background="@null"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        app:tint="#FFFFFF" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feedback"
+                    android:textColor="#00C853"
+                    android:textSize="8sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- SETTINGS — rightmost as requested -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="#FF6D00"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="5dp">
+                    <ImageButton
+                        android:id="@+id/mainSettingsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@android:drawable/ic_menu_preferences"
+                        android:contentDescription="Open settings"
+                        android:background="@null"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        app:tint="#FFFFFF" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textColor="#FF6D00"
+                    android:textSize="8sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- CAMERA ZONE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="460dp"
+        android:layout_marginTop="76dp"
+        android:orientation="vertical"
+        android:gravity="center" />
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!--   BOTTOM PANEL                                         -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:paddingHorizontal="14dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp">
+
+        <!-- ─── DETECTED SIGN CARD ─────────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/detectedSignCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/islBgCard"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/resultText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="--"
+                    android:textColor="?attr/islTextPrimary"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-condensed"
+                    android:letterSpacing="-0.02" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DETECTED SIGN"
+                        android:textColor="?attr/islTextLabel"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12" />
+
+                    <TextView
+                        android:id="@+id/confidenceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Ready"
+                        android:textColor="#00E5FF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/confidenceBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="100dp"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="4dp"
+                        android:progressDrawable="@drawable/confidence_progress_bar"
+                        android:max="100"
+                        android:progress="0" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ─── WORD + SENTENCE CARD ───────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/wordSentenceCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="?attr/islBgCard"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detectedSignCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="10dp">
+
+                <!-- TRANSLATION ROW -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/swapLanguageButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/icon_btn_bg"
+                        android:contentDescription="Reset to English"
+                        android:padding="8dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_swap_horiz"
+                        app:tint="#00E5FF" />
+
+                    <Button
+                        android:id="@+id/targetLanguageButton"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:text="English ▼"
+                        android:textColor="#00E5FF"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/spinner_dark_bg"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:paddingHorizontal="12dp"
+                        style="?android:attr/borderlessButtonStyle" />
+
+                </LinearLayout>
+
+                <!-- DIVIDER -->
+                <View
+                    android:id="@+id/langDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="6dp"
+                    android:background="?attr/islDivider" />
+
+                <!-- RIGHT HAND BANNER -->
+                <LinearLayout
+                    android:id="@+id/rightHandBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="?attr/islBanner"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✋"
+                        android:textSize="11sp"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Use RIGHT HAND only · for best accuracy"
+                        android:textColor="#00E5FF"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04" />
+
+                </LinearLayout>
+
+                <!-- CURRENT WORD SECTION -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/wordLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CURRENT WORD"
+                        android:textColor="?attr/islTextLabel"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.12" />
+
+                    <ImageButton
+                        android:id="@+id/speakWordButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/speak_btn_green_bg"
+                        android:contentDescription="Speak word"
+                        android:padding="6dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/volume_off"
+                        app:tint="#00C853" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/wordText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text=""
+                    android:textColor="?attr/islTextPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:minHeight="26dp"
+                    android:gravity="start"
+                    android:hint="Spelling here..."
+                    android:textColorHint="?attr/islTextHint" />
+
+                <!-- DIVIDER between word and sentence -->
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?attr/islDivider" />
+
+                <!-- SENTENCE SECTION -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="top"
+                    android:layout_marginTop="8dp">
+
+                    <!-- LEFT: Save button -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="14dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            app:cardBackgroundColor="#FF9800"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="4dp">
+
+                            <ImageButton
+                                android:id="@+id/saveHistoryBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@android:drawable/ic_menu_save"
+                                android:contentDescription="Save sentence to history"
+                                android:background="@null"
+                                android:padding="8dp"
+                                android:scaleType="fitCenter"
+                                app:tint="#FFFFFF" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:gravity="center"
+                            android:text="Save"
+                            android:textColor="#FF9800"
+                            android:textSize="8sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- CENTRE: SENTENCE label + text -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/sentenceLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SENTENCE"
+                            android:textColor="?attr/islTextLabel"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.12" />
+
+                        <TextView
+                            android:id="@+id/sentenceText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text=""
+                            android:textColor="?attr/islTextSecondary"
+                            android:textSize="15sp"
+                            android:lineSpacingMultiplier="1.3"
+                            android:minHeight="24dp"
+                            android:gravity="start"
+                            android:hint="Your sentence appears here..."
+                            android:textColorHint="?attr/islTextHint" />
+
+                    </LinearLayout>
+
+                    <!-- RIGHT: Speak button -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="14dp">
+
+                        <ImageButton
+                            android:id="@+id/speakSentenceButton"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/volume_off"
+                            android:contentDescription="Speak sentence"
+                            android:background="@drawable/speak_btn_blue_bg"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            app:tint="#2979FF" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Speak"
+                            android:textColor="#2979FF"
+                            android:textSize="8sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Bottom note -->
+                <TextView
+                    android:id="@+id/historyNoteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="⚠ History is deleted when app is uninstalled"
+                    android:textColor="?attr/islTextLabel"
+                    android:textSize="9sp"
+                    android:gravity="center"
+                    android:letterSpacing="0.01" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ─── 5 ACTION FABs ──────────────────────────────── -->
+        <LinearLayout
+            android:id="@+id/buttonContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordSentenceCard">
+
+            <!-- DETECT — green -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/captureButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:contentDescription="Capture sign"
+                    app:backgroundTint="#00C853" app:fabSize="normal"
+                    app:tint="#FFFFFF" app:borderWidth="0dp" app:elevation="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" android:text="Detect"
+                    android:textColor="#00C853" android:textSize="10sp"
+                    android:textStyle="bold" android:gravity="center" />
+            </LinearLayout>
+
+            <!-- DELETE — orange -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/backspaceButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_input_delete"
+                    android:contentDescription="Delete last letter"
+                    app:backgroundTint="#FF6D00" app:fabSize="normal"
+                    app:tint="#FFFFFF" app:borderWidth="0dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" android:text="Delete"
+                    android:textColor="#FF6D00" android:textSize="10sp"
+                    android:textStyle="bold" android:gravity="center" />
+            </LinearLayout>
+
+            <!-- GUIDE — purple -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/referenceButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_info_details"
+                    android:contentDescription="Show guide"
+                    app:backgroundTint="#7C4DFF" app:fabSize="normal"
+                    app:tint="#FFFFFF" app:borderWidth="0dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" android:text="Guide"
+                    android:textColor="#7C4DFF" android:textSize="10sp"
+                    android:textStyle="bold" android:gravity="center" />
+            </LinearLayout>
+
+            <!-- ADD WORD — blue -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/spaceButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_add"
+                    android:contentDescription="Add word"
+                    app:backgroundTint="#2979FF" app:fabSize="normal"
+                    app:tint="#FFFFFF" app:borderWidth="0dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" android:text="Add Word"
+                    android:textColor="#2979FF" android:textSize="10sp"
+                    android:textStyle="bold" android:gravity="center" />
+            </LinearLayout>
+
+            <!-- CLEAR ALL — red -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/clearButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:contentDescription="Clear all"
+                    app:backgroundTint="#D50000" app:fabSize="normal"
+                    app:tint="#FFFFFF" app:borderWidth="0dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" android:text="Clear All"
+                    android:textColor="#D50000" android:textSize="10sp"
+                    android:textStyle="bold" android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

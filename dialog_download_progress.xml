@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  dialog_download_progress.xml
+  ISLens-styled download dialog.
+  Used by both MainActivity and HistoryActivity.
+  Colors: bg #1A1A2E, accent #00E5FF, orange cancel, green success
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/download_dialog_bg"
+    android:padding="28dp"
+    android:gravity="center_horizontal">
+
+    <!-- ── HEADER ROW: icon + title ────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/dlgIcon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:text="📥"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/dlgTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Downloading"
+            android:textColor="#00E5FF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:letterSpacing="0.04" />
+
+    </LinearLayout>
+
+    <!-- ── LANGUAGE NAME ───────────────────────────────────── -->
+    <TextView
+        android:id="@+id/dlgLangName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Italian"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <!-- ── PROGRESS BAR ────────────────────────────────────── -->
+    <ProgressBar
+        android:id="@+id/dlgProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="#1E3A4A"
+        android:progressTint="#00E5FF"
+        android:layout_marginBottom="14dp" />
+
+    <!-- ── PERCENTAGE + STATUS ROW ─────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <!-- Big percent number -->
+        <TextView
+            android:id="@+id/dlgPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textColor="#00E5FF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp">
+
+            <!-- Status line -->
+            <TextView
+                android:id="@+id/dlgStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preparing…"
+                android:textColor="#99FFFFFF"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="1.4" />
+
+            <!-- Time remaining -->
+            <TextView
+                android:id="@+id/dlgTimeRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#55FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ── PHASE INDICATOR (dots row) ──────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <!-- Step 1: Connect -->
+        <LinearLayout
+            android:id="@+id/dlgStep1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/dlgDot1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/download_dot_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connect"
+                android:textColor="#55FFFFFF"
+                android:textSize="9sp"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Connector line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="0.5"
+            android:background="#22FFFFFF" />
+
+        <!-- Step 2: Download -->
+        <LinearLayout
+            android:id="@+id/dlgStep2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/dlgDot2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/download_dot_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Download"
+                android:textColor="#55FFFFFF"
+                android:textSize="9sp"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Connector line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="0.5"
+            android:background="#22FFFFFF" />
+
+        <!-- Step 3: Verify -->
+        <LinearLayout
+            android:id="@+id/dlgStep3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/dlgDot3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/download_dot_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify"
+                android:textColor="#55FFFFFF"
+                android:textSize="9sp"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Connector line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="0.5"
+            android:background="#22FFFFFF" />
+
+        <!-- Step 4: Ready -->
+        <LinearLayout
+            android:id="@+id/dlgStep4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/dlgDot4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/download_dot_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ready"
+                android:textColor="#55FFFFFF"
+                android:textSize="9sp"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ── DIVIDER ──────────────────────────────────────────── -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1AFFFFFF"
+        android:layout_marginBottom="16dp" />
+
+    <!-- ── CANCEL BUTTON ────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/dlgCancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CANCEL"
+        android:textColor="#FF6D00"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="10dp"
+        android:background="@drawable/cancel_btn_bg"
+        android:gravity="center" />
+
+</LinearLayout>

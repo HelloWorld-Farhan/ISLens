@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_guide.xml — FULLY UPDATED
+    Changes vs original:
+      • GUIDE button card added in APP GUIDE section (was missing — cyan button)
+      • Privacy Policy "Internet is used only to download ML translation models (MLKit)"
+        text updated to reflect MyMemory API (no ML Kit downloads)
+      • All other cards unchanged
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/islBgScreen"
+    android:fitsSystemWindows="true">
+
+    <View android:layout_width="match_parent" android:layout_height="160dp"
+        android:background="@drawable/gradient_top" android:layout_gravity="top" />
+
+    <!-- ══ TOP BAR ══ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="top"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="44dp" android:layout_height="44dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Go back"
+            android:background="@drawable/icon_btn_bg"
+            android:padding="10dp" android:scaleType="fitCenter"
+            app:tint="#00E5FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="ISL" android:textColor="#00E5FF" android:textSize="24sp"
+                android:textStyle="bold" android:letterSpacing="0.08"
+                android:fontFamily="sans-serif-condensed" />
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="ens" android:textColor="?attr/islTextPrimary"
+                android:textSize="24sp" android:textStyle="bold"
+                android:letterSpacing="0.04" android:fontFamily="sans-serif-condensed" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="● GUIDE" android:textColor="#00E5FF" android:textSize="10sp"
+            android:textStyle="bold" android:letterSpacing="0.12"
+            android:background="@drawable/badge_live_bg"
+            android:paddingHorizontal="8dp" android:paddingVertical="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ══ SCROLLABLE CONTENT ══ -->
+    <ScrollView
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        android:fillViewport="true" android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp" android:paddingTop="16dp"
+            android:paddingBottom="32dp">
+
+            <!-- ══════════════════════════════════════════
+                 1.  IMPORTANT NOTICE
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="#FF9800" app:cardCornerRadius="18dp"
+                app:cardElevation="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="⚠️  IMPORTANT NOTICES"
+                        android:textColor="#0A0A0F" android:textSize="13sp"
+                        android:textStyle="bold" android:letterSpacing="0.1"
+                        android:layout_marginBottom="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="✋" android:textSize="22sp" android:layout_marginEnd="10dp" />
+                        <TextView
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Always use your RIGHT HAND for sign detection. Left-hand signs are not supported and will reduce accuracy significantly."
+                            android:textColor="#0A0A0F" android:textSize="13sp"
+                            android:textStyle="bold" android:lineSpacingMultiplier="1.4" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🗑️" android:textSize="22sp" android:layout_marginEnd="10dp" />
+                        <TextView
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sentence history is permanently deleted when you uninstall the app. Back up important sentences before uninstalling."
+                            android:textColor="#0A0A0F" android:textSize="13sp"
+                            android:textStyle="bold" android:lineSpacingMultiplier="1.4" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════════════════
+                 2.  ISL ALPHABET CHART
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="?attr/islBgCard" app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <View android:layout_width="4dp" android:layout_height="22dp"
+                            android:background="#FF9800" android:layout_marginEnd="10dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="ISL ALPHABET CHART"
+                            android:textColor="#FF9800" android:textSize="12sp"
+                            android:textStyle="bold" android:letterSpacing="0.15"
+                            android:fontFamily="sans-serif-condensed" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="?attr/islDivider" android:layout_marginBottom="12dp" />
+
+                    <TextView
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="All 26 ISL hand-sign letters (A–Z). Study and practise each gesture to improve detection accuracy. Save this chart to your phone for offline reference."
+                        android:textColor="?attr/islTextSecondary" android:textSize="13sp"
+                        android:lineSpacingMultiplier="1.5" android:layout_marginBottom="14dp" />
+
+                    <ImageView
+                        android:id="@+id/islAlphabetImage"
+                        android:layout_width="match_parent" android:layout_height="270dp"
+                        android:src="@drawable/isl_alphabet"
+                        android:scaleType="fitCenter" android:adjustViewBounds="true"
+                        android:background="?attr/islDivider" android:padding="6dp"
+                        android:layout_marginBottom="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="📥" android:textSize="18sp" android:layout_marginEnd="10dp" />
+                        <TextView
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Tap the button below to download the chart.\nSaved to: Gallery ▸ Pictures ▸ ISL Vision"
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/downloadAlphabetButton"
+                        android:layout_width="match_parent" android:layout_height="50dp"
+                        android:text="⬇   DOWNLOAD ISL CHART TO GALLERY"
+                        android:textColor="#0A0A0F" android:textSize="12sp"
+                        android:textStyle="bold" android:letterSpacing="0.08"
+                        app:backgroundTint="#FF9800" app:cornerRadius="12dp"
+                        app:elevation="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════════════════
+                 3.  APP GUIDE — ALL CONTROLS
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="?attr/islBgCard" app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <View android:layout_width="4dp" android:layout_height="22dp"
+                            android:background="#00C853" android:layout_marginEnd="10dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="APP GUIDE — ALL CONTROLS"
+                            android:textColor="#00C853" android:textSize="12sp"
+                            android:textStyle="bold" android:letterSpacing="0.15"
+                            android:fontFamily="sans-serif-condensed" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="?attr/islDivider" android:layout_marginBottom="14dp" />
+
+                    <!-- ACTION BUTTONS sub-header -->
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="ACTION BUTTONS (Bottom Row)"
+                        android:textColor="?attr/islTextLabel" android:textSize="10sp"
+                        android:textStyle="bold" android:letterSpacing="0.2"
+                        android:layout_marginBottom="10dp" />
+
+                    <!-- Detect -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🟢" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Detect  (Green · Large)"
+                                android:textColor="#00C853" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Starts sign capture. Tap once then hold your RIGHT hand still. ISLens needs 7 consistent frames before confirming a letter — the confidence bar shows live progress."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Delete -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🟠" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Delete  (Orange)"
+                                android:textColor="#FF6D00" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Removes the last letter typed in the Current Word. Tap repeatedly to erase multiple letters one at a time."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Guide — THIS WAS MISSING, NOW ADDED -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🟣" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Guide / Info  (Purple)"
+                                android:textColor="#7C4DFF" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Opens this page — ISL chart download, full app guide for all buttons and controls, project info, and legal details."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Add Word -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🔵" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Add Word  (Blue)"
+                                android:textColor="#2979FF" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Appends the completed Current Word into the Sentence with a space, then clears the word field so you can spell the next word."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Clear All -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="16dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🔴" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Clear All  (Red)"
+                                android:textColor="#D50000" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Resets everything — clears the current word, the full sentence, and the detected sign display. Does NOT delete saved history."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- TOP BAR ICONS sub-header -->
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="TOP BAR ICONS (Top-Right)"
+                        android:textColor="?attr/islTextLabel" android:textSize="10sp"
+                        android:textStyle="bold" android:letterSpacing="0.2"
+                        android:layout_marginBottom="10dp" />
+
+                    <!-- Flash -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🔦" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Flash  (Orange FAB — top right)"
+                                android:textColor="#FF9800" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Toggles the rear camera torch on or off. Use in dim environments. Good lighting is the #1 factor in detection accuracy."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- History -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🕐" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="History  (Purple FAB — top right)"
+                                android:textColor="#7C4DFF" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Opens the full History page showing all manually saved sentences with date and time. You can search, delete individual entries, or clear all history."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Feedback -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="💬" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Feedback  (Green FAB — top right)"
+                                android:textColor="#00C853" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Opens the Feedback page. Rate the app and send suggestions or bug reports directly to the development team."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Settings -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="16dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="⚙️" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Settings  (Orange · Rightmost — top right)"
+                                android:textColor="#FF6D00" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Customise the app: toggle Dark/Light mode, turn sound ON/OFF, pick your preferred notification click sound, and toggle vibration feedback."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- SENTENCE CARD BUTTONS sub-header -->
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="SENTENCE CARD BUTTONS"
+                        android:textColor="?attr/islTextLabel" android:textSize="10sp"
+                        android:textStyle="bold" android:letterSpacing="0.2"
+                        android:layout_marginBottom="10dp" />
+
+                    <!-- Save -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="💾" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Save in History  (Orange · Next to sentence)"
+                                android:textColor="#FF9800" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Manually saves the current sentence to History with date and time. History is NOT cleared on app close — only on uninstall."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Speak Word -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🟢" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Speak Word  (Green speaker)"
+                                android:textColor="#00C853" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Reads the current word aloud using Text-to-Speech in the selected output language."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Speak Sentence -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="16dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🔵" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Speak Sentence  (Blue speaker)"
+                                android:textColor="#2979FF" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Reads the full built sentence aloud using Text-to-Speech in the selected output language."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- TRANSLATION & SPEECH sub-header -->
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="TRANSLATION &amp; SPEECH"
+                        android:textColor="?attr/islTextLabel" android:textSize="10sp"
+                        android:textStyle="bold" android:letterSpacing="0.2"
+                        android:layout_marginBottom="10dp" />
+
+                    <!-- Language button -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="🌐" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Output Language  (Right Button)"
+                                android:textColor="#00E5FF" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="3dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Tap to open the language picker and choose from 58 supported languages. ISLens detects signs as English letters — this controls how the result is translated and spoken aloud. Requires internet for translation."
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.45" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 58 languages -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="top"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="12dp" android:paddingVertical="12dp"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp"
+                            android:text="📋" android:textSize="20sp" android:gravity="center"
+                            android:layout_marginEnd="12dp" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="All 58 Supported Languages"
+                                android:textColor="#00E5FF" android:textSize="13sp"
+                                android:textStyle="bold" android:layout_marginBottom="6dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Afrikaans · Arabic · Belarusian · Bengali · Bulgarian · Catalan · Chinese · Croatian · Czech · Danish · Dutch · English · Esperanto · Estonian · Finnish · French · Galician · Georgian · German · Greek · Gujarati · Haitian Creole · Hebrew · Hindi · Hungarian · Icelandic · Indonesian · Irish · Italian · Japanese · Kannada · Korean · Latvian · Lithuanian · Macedonian · Malay · Maltese · Marathi · Norwegian · Persian · Polish · Portuguese · Romanian · Russian · Slovak · Slovenian · Spanish · Swahili · Swedish · Tagalog · Tamil · Telugu · Thai · Turkish · Ukrainian · Urdu · Vietnamese · Welsh"
+                                android:textColor="?attr/islTextLabel" android:textSize="12sp"
+                                android:lineSpacingMultiplier="1.55" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════════════════
+                 4.  ABOUT THE PROJECT
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="?attr/islBgCard" app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <View android:layout_width="4dp" android:layout_height="22dp"
+                            android:background="#00E5FF" android:layout_marginEnd="10dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="ABOUT THE PROJECT"
+                            android:textColor="#00E5FF" android:textSize="12sp"
+                            android:textStyle="bold" android:letterSpacing="0.15"
+                            android:fontFamily="sans-serif-condensed" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="?attr/islDivider" android:layout_marginBottom="14dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="ISLens"
+                        android:textColor="?attr/islTextPrimary" android:textSize="30sp"
+                        android:textStyle="bold" android:fontFamily="sans-serif-condensed"
+                        android:letterSpacing="0.04" android:layout_marginBottom="4dp" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Real-Time Indian Sign Language Recognition"
+                        android:textColor="#00E5FF" android:textSize="13sp"
+                        android:textStyle="bold" android:letterSpacing="0.06"
+                        android:layout_marginBottom="14dp" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="ISLens is an on-device AI application that bridges the communication gap between the hearing-impaired community and the hearing world. It uses a custom-trained TensorFlow Lite model combined with Google MediaPipe Hand Landmark detection to recognise all 26 letters of the Indian Sign Language alphabet in real time — instantly, with no internet required for detection."
+                        android:textColor="?attr/islTextSecondary" android:textSize="14sp"
+                        android:lineSpacingMultiplier="1.55" android:layout_marginBottom="12dp" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="All sign detection runs entirely on-device, ensuring complete privacy and full offline availability. Internet is used only for optional translation (MyMemory API) and feedback."
+                        android:textColor="?attr/islTextSecondary" android:textSize="14sp"
+                        android:lineSpacingMultiplier="1.55" android:layout_marginBottom="16dp" />
+
+                    <!-- Feature badges -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="● On-Device AI" android:textColor="#00C853"
+                            android:textSize="11sp" android:textStyle="bold"
+                            android:background="@drawable/speak_btn_green_bg"
+                            android:paddingHorizontal="10dp" android:paddingVertical="5dp"
+                            android:layout_marginEnd="8dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="● Real-Time" android:textColor="#00E5FF"
+                            android:textSize="11sp" android:textStyle="bold"
+                            android:background="@drawable/icon_btn_bg"
+                            android:paddingHorizontal="10dp" android:paddingVertical="5dp"
+                            android:layout_marginEnd="8dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="● No Internet" android:textColor="#FF9800"
+                            android:textSize="11sp" android:textStyle="bold"
+                            android:background="@drawable/glass_card_bg"
+                            android:paddingHorizontal="10dp" android:paddingVertical="5dp" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="● 26 ISL Signs" android:textColor="#2979FF"
+                            android:textSize="11sp" android:textStyle="bold"
+                            android:background="@drawable/speak_btn_blue_bg"
+                            android:paddingHorizontal="10dp" android:paddingVertical="5dp"
+                            android:layout_marginEnd="8dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="● Text-to-Speech" android:textColor="#7C4DFF"
+                            android:textSize="11sp" android:textStyle="bold"
+                            android:background="@drawable/glass_card_bg"
+                            android:paddingHorizontal="10dp" android:paddingVertical="5dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════════════════
+                 5.  TERMS &amp; CONDITIONS
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="?attr/islBgCard" app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <View android:layout_width="4dp" android:layout_height="22dp"
+                            android:background="#FF9800" android:layout_marginEnd="10dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TERMS &amp; CONDITIONS"
+                            android:textColor="#FF9800" android:textSize="12sp"
+                            android:textStyle="bold" android:letterSpacing="0.15"
+                            android:fontFamily="sans-serif-condensed" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="📄" android:textSize="20sp" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="?attr/islDivider" android:layout_marginBottom="14dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="By using ISLens you agree to our Terms and Conditions. Please read them carefully before using the app."
+                        android:textColor="?attr/islTextSecondary" android:textSize="13sp"
+                        android:lineSpacingMultiplier="1.5" android:layout_marginBottom="14dp" />
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="14dp" android:paddingVertical="12dp"
+                        android:layout_marginBottom="14dp">
+
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="• ISLens is provided for personal, non-commercial use only."
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" android:layout_marginBottom="6dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="• The app is offered 'as-is'. We do not guarantee 100% detection accuracy in all conditions."
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" android:layout_marginBottom="6dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="• You must not reverse-engineer, copy, or redistribute the app or its models."
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" android:layout_marginBottom="6dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="• We reserve the right to update the app and these terms at any time."
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/termsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="📄  READ FULL TERMS &amp; CONDITIONS"
+                        android:textColor="#0A0A0F"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.06"
+                        android:tag="https://sites.google.com/view/islens-terms-and-condition/home"
+                        app:backgroundTint="#FF9800"
+                        app:cornerRadius="12dp"
+                        app:elevation="3dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════════════════
+                 6.  PRIVACY POLICY
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="?attr/islBgCard" app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <View android:layout_width="4dp" android:layout_height="22dp"
+                            android:background="#00E5FF" android:layout_marginEnd="10dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PRIVACY POLICY"
+                            android:textColor="#00E5FF" android:textSize="12sp"
+                            android:textStyle="bold" android:letterSpacing="0.15"
+                            android:fontFamily="sans-serif-condensed" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🔒" android:textSize="20sp" />
+                    </LinearLayout>
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="?attr/islDivider" android:layout_marginBottom="14dp" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Your privacy matters to us. ISLens is designed to work fully offline for sign detection — your camera feed and sign-language data never leave your device."
+                        android:textColor="?attr/islTextSecondary" android:textSize="13sp"
+                        android:lineSpacingMultiplier="1.5" android:layout_marginBottom="14dp" />
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/islBanner"
+                        android:paddingHorizontal="14dp" android:paddingVertical="12dp"
+                        android:layout_marginBottom="14dp">
+
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="🔒  No camera data is uploaded or stored on any server."
+                            android:textColor="#00C853" android:textSize="12sp"
+                            android:textStyle="bold" android:lineSpacingMultiplier="1.5"
+                            android:layout_marginBottom="6dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="🔒  Sentence history is stored locally on your device only and is deleted when you uninstall the app."
+                            android:textColor="#00C853" android:textSize="12sp"
+                            android:textStyle="bold" android:lineSpacingMultiplier="1.5"
+                            android:layout_marginBottom="6dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="🌐  Internet is used only for optional text translation (MyMemory API) and feedback submission. Sign detection is 100% offline."
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" android:layout_marginBottom="6dp" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="📊  We do not collect analytics, usage statistics, or personal data."
+                            android:textColor="?attr/islTextSecondary" android:textSize="12sp"
+                            android:lineSpacingMultiplier="1.5" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/privacyButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="🔒  READ FULL PRIVACY POLICY"
+                        android:textColor="#0A0A0F"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.06"
+                        android:tag="https://sites.google.com/view/islens-privacy-policy/home"
+                        app:backgroundTint="#00BCD4"
+                        app:cornerRadius="12dp"
+                        app:elevation="3dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════════════════
+                 7.  COPYRIGHT FOOTER
+                 ══════════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="?attr/islBgCard" app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingHorizontal="20dp" android:paddingVertical="20dp">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/isl_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="ISLens"
+                        android:textColor="?attr/islTextPrimary"
+                        android:textSize="22sp" android:textStyle="bold"
+                        android:fontFamily="sans-serif-condensed"
+                        android:letterSpacing="0.06"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Real-Time Indian Sign Language Recognition"
+                        android:textColor="#00E5FF" android:textSize="11sp"
+                        android:textStyle="bold" android:letterSpacing="0.04"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp" />
+
+                    <View
+                        android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="?attr/islDivider"
+                        android:layout_marginBottom="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="© 2026 ISLens · All Rights Reserved"
+                        android:textColor="?attr/islTextLabel"
+                        android:textSize="12sp" android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Unauthorised copying, distribution, or modification\nof this app is strictly prohibited."
+                        android:textColor="?attr/islTextLabel"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:lineSpacingMultiplier="1.4" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Back to Camera button ─────────────────────────── -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backToHomeButton"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="← BACK TO CAMERA"
+                android:textColor="#0A0A0F" android:textSize="14sp"
+                android:textStyle="bold" android:letterSpacing="0.1"
+                app:backgroundTint="#00E5FF" app:cornerRadius="14dp"
+                app:elevation="6dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

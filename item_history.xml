@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="?attr/islBgCard"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="14dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp">
+
+        <!-- ── ROW 1: Timestamp + Delete button ──────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🕐"
+                android:textSize="13sp"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/histItemTimestamp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="24 Mar 2026  18:03"
+                android:textColor="#00E5FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.03" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                app:cardBackgroundColor="#D50000"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
+                <ImageButton
+                    android:id="@+id/histItemDeleteBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/ic_menu_delete"
+                    android:contentDescription="Delete"
+                    android:background="@null"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:tint="#FFFFFF" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- ── DIVIDER ───────────────────────────────────── -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/islDivider"
+            android:layout_marginBottom="10dp" />
+
+        <!-- ── ENGLISH SENTENCE + SPEAK ENGLISH ─────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🇬🇧  ORIGINAL SENTENCE"
+                    android:textColor="?attr/islTextLabel"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/histItemSentence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sample sentence here"
+                    android:textColor="?attr/islTextPrimary"
+                    android:textSize="16sp"
+                    android:lineSpacingMultiplier="1.4"
+                    android:gravity="start" />
+
+            </LinearLayout>
+
+            <!-- Speak English — green -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                app:cardBackgroundColor="#00C853"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp">
+                <ImageButton
+                    android:id="@+id/histItemSpeakBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/volume_off"
+                    android:contentDescription="Speak sentence"
+                    android:background="@null"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    app:tint="#FFFFFF" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- ── DIVIDER ───────────────────────────────────── -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/islDivider"
+            android:layout_marginBottom="10dp" />
+
+        <!-- ── LANGUAGE SELECTOR ROW ─────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌐"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp" />
+
+            <android.widget.Button
+                android:id="@+id/histItemLangBtn"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="Select language ▼"
+                android:textColor="#00E5FF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:background="@drawable/spinner_dark_bg"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:paddingHorizontal="10dp"
+                style="?android:attr/borderlessButtonStyle" />
+
+            <TextView
+                android:id="@+id/histItemLangLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#00E5FF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:layout_marginStart="6dp"
+                android:maxWidth="80dp"
+                android:ellipsize="end"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <!-- ── TRANSLATION + SPEAK TRANSLATED ───────────── -->
+        <!-- Both hidden until user picks a language -->
+        <LinearLayout
+            android:id="@+id/histTranslationRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:visibility="gone"
+            android:layout_marginTop="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔤  TRANSLATION"
+                    android:textColor="?attr/islTextLabel"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/histItemTranslated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#00E5FF"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.4"
+                    android:gravity="start" />
+
+            </LinearLayout>
+
+            <!-- Speak translated — blue -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                app:cardBackgroundColor="#2979FF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp">
+                <ImageButton
+                    android:id="@+id/histItemSpeakTranslatedBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/volume_off"
+                    android:contentDescription="Speak translation"
+                    android:background="@null"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    app:tint="#FFFFFF" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

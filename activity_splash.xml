@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#07070D">
+
+    <!-- ══ PULSE RING 1 ══════════════════════════════════════════ -->
+    <View
+        android:id="@+id/ring1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:alpha="0"
+        android:background="@drawable/splash_ring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.33" />
+
+    <!-- ══ PULSE RING 2 ══════════════════════════════════════════ -->
+    <View
+        android:id="@+id/ring2"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        android:alpha="0"
+        android:background="@drawable/splash_ring"
+        app:layout_constraintBottom_toBottomOf="@+id/ring1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ring1" />
+
+    <!-- ══ PULSE RING 3 ══════════════════════════════════════════ -->
+    <View
+        android:id="@+id/ring3"
+        android:layout_width="480dp"
+        android:layout_height="480dp"
+        android:alpha="0"
+        android:background="@drawable/splash_ring"
+        app:layout_constraintBottom_toBottomOf="@+id/ring1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ring1" />
+
+    <!-- ══ LIVE BADGE (top-right) ════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/liveBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        android:background="@drawable/badge_live_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/liveDot"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/dot_red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.2"
+            android:text="LIVE"
+            android:textColor="#FF6666"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- ══ LOGO CARD ══════════════════════════════════════════════ -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/splashLogoCard"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:alpha="0"
+        app:cardBackgroundColor="#00E5FF"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/handEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✋"
+                android:textSize="48sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ══ TITLE ROW (ISL + ens) ══════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/titleRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:alpha="0"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashLogoCard">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:letterSpacing="-0.02"
+            android:text="ISL"
+            android:textColor="#00E5FF"
+            android:textSize="64sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:letterSpacing="-0.02"
+            android:text="ens"
+            android:textColor="#FFFFFF"
+            android:textSize="64sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- ══ ACCENT BAR ════════════════════════════════════════════ -->
+    <View
+        android:id="@+id/accentBar"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="6dp"
+        android:alpha="0"
+        android:background="@drawable/gradient_cyan_bar"
+        app:layout_constraintEnd_toEndOf="@+id/titleRow"
+        app:layout_constraintStart_toStartOf="@+id/titleRow"
+        app:layout_constraintTop_toBottomOf="@+id/titleRow" />
+
+    <!-- ══ TAGLINE ════════════════════════════════════════════════ -->
+    <TextView
+        android:id="@+id/tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:alpha="0"
+        android:letterSpacing="0.15"
+        android:text="INDIAN SIGN LANGUAGE  ·  ON-DEVICE AI"
+        android:textColor="#55FFFFFF"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accentBar" />
+
+    <!-- ══ AI CHIP ════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/aiChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:alpha="0"
+        android:background="@drawable/chip_cyan_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagline">
+
+        <View
+            android:id="@+id/aiDot"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/dot_cyan" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.06"
+            android:text="Real-Time Detection"
+            android:textColor="#99E5FF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- ══ STATS STRIP (26 SIGNS, A-Z, AI) ══════════════════════ -->
+    <LinearLayout
+        android:id="@+id/statsStrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:alpha="0"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aiChip">
+
+        <!-- Stat: Signs — FIXED to 26 -->
+        <LinearLayout
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="26"
+                android:textColor="#00E5FF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.14"
+                android:text="SIGNS"
+                android:textColor="#44FFFFFF"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:background="#22FFFFFF" />
+
+        <!-- Stat: Alphabet -->
+        <LinearLayout
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="A–Z"
+                android:textColor="#00E5FF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.14"
+                android:text="ALPHABET"
+                android:textColor="#44FFFFFF"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:background="#22FFFFFF" />
+
+        <!-- Stat: AI -->
+        <LinearLayout
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="AI"
+                android:textColor="#00E5FF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.14"
+                android:text="POWERED"
+                android:textColor="#44FFFFFF"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ══ LOADING BAR ══════════════════════════════════════════ -->
+    <FrameLayout
+        android:id="@+id/loadingBarBg"
+        android:layout_width="160dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="32dp"
+        android:alpha="0"
+        android:background="#14FFFFFF"
+        android:clipChildren="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statsStrip">
+
+        <View
+            android:id="@+id/loadingBarFill"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_gravity="start"
+            android:background="#00E5FF" />
+
+    </FrameLayout>
+
+    <!-- ══ VERSION TEXT ══════════════════════════════════════════ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:letterSpacing="0.05"
+        android:text="ISLens v1.0  ·  On-Device"
+        android:textColor="#25FFFFFF"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
