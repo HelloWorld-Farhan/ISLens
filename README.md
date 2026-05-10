@@ -17,7 +17,19 @@
 
 ## 📸 Screenshots
 
-> *(Add your app screenshots here)*
+<p align="center">
+  <img src="screenshots/ISL-Image-3.png" width="23%" alt="Sentence History Screen"/>
+  <img src="screenshots/ISL-Image-4.png" width="23%" alt="Live Detection Screen"/>
+  <img src="screenshots/ISL-image-5.png" width="23%" alt="ISL Alphabet Chart"/>
+  <img src="screenshots/ISL-Image-23.png" width="23%" alt="Guide Screen"/>
+</p>
+
+<p align="center">
+  <img src="screenshots/ISL-Image-66.png" width="23%" alt="Settings Screen"/>
+  <img src="screenshots/ISL-Image-111.png" width="23%" alt="App Showcase"/>
+</p>
+
+> 📁 **Note:** Place the screenshot images in a `screenshots/` folder at the root of the repository so they render correctly on GitHub.
 
 ---
 
@@ -90,6 +102,14 @@ ISLens/
 │   │       └── AndroidManifest.xml
 │   │
 │   └── build.gradle                             ← App-level Gradle (dependencies here)
+│
+├── screenshots/                                 ← App screenshots for README
+│   ├── ISL-Image-3.png
+│   ├── ISL-Image-4.png
+│   ├── ISL-image-5.png
+│   ├── ISL-Image-23.png
+│   ├── ISL-Image-66.png
+│   └── ISL-Image-111.png
 │
 ├── build.gradle                                 ← Project-level Gradle
 ├── train_FINAL_RESUMABLE.py                     ← Python training script for TFLite model
@@ -398,10 +418,9 @@ The app recognizes the following 26 Indian Sign Language alphabet signs:
 ## 👨‍💻 Authors
 
 **Farhan Khalid** — Android Developer & ML Engineer  
-📧 farhankhalid179@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/farhan-khalid)  
+📧 farhankhalid17968@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/farhan-khalid-117514259/)  
 🐙 [GitHub](https://github.com/HelloWorld-Farhan)
-
 
 ---
 
