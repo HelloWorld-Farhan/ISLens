@@ -29,8 +29,6 @@
   <img src="screenshots/ISL-Image-111.png" width="23%" alt="App Showcase"/>
 </p>
 
-> 📁 **Note:** Place the screenshot images in a `screenshots/` folder at the root of the repository so they render correctly on GitHub.
-
 ---
 
 ## ✨ Features
